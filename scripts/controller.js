@@ -120,12 +120,9 @@ $('#btn-connect').click(function(){
 					var row = $("<tr>");
 					$("<td>").text(topic).appendTo($(row));
 					$("<td>").text(payload).appendTo($(row));
-					$("<td>").text(moment().format('MMMM Do YYYY, h:mm:ss a')).appendTo($(row));
 					$("#tbl-body-pub").append($(row));
 				}
 			});
-			
-			
 		}
 
 	});
@@ -143,7 +140,6 @@ $('#btn-connect').click(function(){
 				else {
 					var row = $("<tr>").attr("id", "mysub");
 					$("<td>").text(topic).appendTo($(row));
-					$("<td>").text(moment().format('MMMM Do YYYY, h:mm:ss a')).appendTo($(row));
 					$("#tbl-body-subscribe").append($(row));
 					alert('Subscribed successfully!');
 				}
@@ -157,7 +153,7 @@ $('#btn-connect').click(function(){
 			client.unsubscribe(topic, function(error) {
 				if(error) {
 					// pag naka disconnect naka then mu unsubscribe ka, mo error siya
-					alert("Unsubscribe error")
+					alert("Unsubscribe error! You are not connected")
 				} else {
 					alert("Unsubscribed successfully");
 				}
