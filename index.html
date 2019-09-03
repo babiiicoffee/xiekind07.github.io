@@ -1,166 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mqtt</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<style>
-    html body{
-        height: 100%;
-    }
-    .card{
-        height: 100%;
-        color:cornflowerblue;
-    }
-
-</style>
-
-<body>
-    <div>
-        <h1>MOWS</h1>
-        <p>MQTT on Web Browser</p> 
-    </div>
+    <head>
+        <title>Xie Kind</title>
+        <link rel="icon" type="image/png" href="images/download.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+            <h1>MQTT</h1>
+            <p>My MQTT Web App</p>
+        </div>
     <div class="container">
         <div class="row">
-
-            <!-- row 1 -->
-
+            <div class="col">
+                <div class="card">
+                    <div class="conatiner mx-auto">
+                        <center>
+                            <div class="card-header">
+                                <div class="text-center h4">Broker</div>  </div>
+                                <input id="broker" value="wss://test.mosquitto.org:8081/mqtt"><br>
+                                <button id="connect" onclick="onConnect()">Connect</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
             <div class="col">
                 <div class="card">
                     <div class="container">
-                            <div class="card-header mx-auto">
-                                <div class="text-center">Broker</div>
-
-                            </div>
-                            <div class="card-body mx-auto">
-                                <label for="input-broker-ws"> Address:</label>
-                                <input type="text" class="form-control" id="input-broker-ws" value="ws://broker.hivemq.com:8000/mqtt"><br>
-
-                                <button id="btn-connect" class="btn btn-outline-primary">Connect</button>
-
-                                <button id="btn-disconnect" class="btn btn-outline-primary">Disconnect</button>
-                            </div>
-                        
-                        <div >
-                            Status: <br>
-                            <div id="status" class="text-center alert alert-secondary">
-                                Disconnected
-                            </div>
-                        </div>
-                        <div class="card-footer"></div>
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">Message: <br><br>
-                            <table class="text-center table table-bordered">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th>Topic</th>
-                                        <th>Message</th>
-                                        <th>Timestamp</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbl-body">
-                
-                                </tbody>
-                            </table>
-                        </div>
+                        <center>
+                                <div class="card-header h4">Publisher</div>
+                                Topic : <input id="publishTopic" value="Judilyn"><br>
+                                Payload : <input id="publishPayload" value="But-anon"><br>
+                                    <button id="publish" onclick="onPublish()">Publish</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="container">
+                        <center>
+                                <div class="card-hearder h4">Subscriber</div>
+                                Topic: <input id="subscribeTopic" value="Judilyn"><br>
+                                <button id="subscribe" onclick="onSubscribe()">Subscribe</button>
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-            <!-- row 2 -->
-
-            <div class="row">
-                <div class="card">
-                    <div class="container">
-                            <div class="card-header mx-auto">
-                                <div class="text-center">Subscriber</div>
-                            </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="text-left">Topic:</label>
-                                <input type="text" class="form-control" id="topic-sub" value="exercise">
-                            </div>
-                            <div class="mx-auto">
-                                <button id="btn-subscribe" class="btn btn-outline-primary">Subscribe</button>
-                                <button id="btn-unsubscribe" class="btn btn-outline-primary">Unsubscribe</button>
-                            </div>
-                        </div><br><br><br><br>
-                        <div class="card-footer"></div>
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">Message: <br><br>
-                            <table class="text-center table table-bordered">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th>Topic</th>
-                                        <th>Timestamp</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbl-body-subscribe">
-                
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- row 3 -->
-
-            <div class="row">
-                <div class="card">
-                    <div class="container">
-                            <div class="card-header mx-auto">
-                                <div class="text-center">Publisher</div>
-                            </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label class="text-left">Topic:</label>
-                                <input type="text" class="form-control" id="topic" value="judy">
-                            </div>
-                            <div class="form-group">
-                                <label class="text-justify">Message:</label>
-                                <input type="text" class="form-control" id="message" value="Jude">
-                            </div>
-                                <button id="btn-publish" class="btn btn-outline-primary mx-auto" style="padding:13px">Publish</button>
-                        </div>
-                        <div class="card-footer"></div>
-                        <div class="table-wrapper-scroll-y my-custom-scrollbar">Message: <br><br>
-                            <table class="text-center table table-bordered">
-                                <thead class="table-primary">
-                                    <tr>
-                                        <th>Topic</th>
-                                        <th>Message</th>
-                                        <th>Timestamp</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbl-body-pub">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-</div>
-        
-
-        
-        
+    </div>
     
+        
+    </body>
 
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script src="scripts/browserMqtt.js"></script>
     <script src="scripts/controller.js"></script>
 </body>
