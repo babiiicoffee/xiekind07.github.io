@@ -75,8 +75,6 @@
 //     console.log(inputPublish);
 // });
 
-
-
 // basic functionalities
 
 $('#btn-connect').click(function(){
@@ -135,13 +133,14 @@ $('#btn-connect').click(function(){
 		var topic = $("#topic").val();
 		var subscribe = $("#topic-sub").val();
 		if (subscribe != topic) {
-			alert("Sorry You are not Connected");
+			alert("Sorry entered topic is not available");
 		}
 		else if (subscribe == topic && topic !== "") {
 			client.subscribe(topic, function(error) {
 				if(error) {
 					alert("Sorry You are not Connected");
-				} else {
+				} 
+				else {
 					var row = $("<tr>").attr("id", "mysub");
 					$("<td>").text(topic).appendTo($(row));
 					$("<td>").text(moment().format('MMMM Do YYYY, h:mm:ss a')).appendTo($(row));
