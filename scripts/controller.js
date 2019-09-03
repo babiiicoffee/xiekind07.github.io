@@ -75,8 +75,6 @@
 //     console.log(inputPublish);
 // });
 
-
-
 // basic functionalities
 
 $('#btn-connect').click(function(){
