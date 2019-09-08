@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Xie Kind</title>
-        <link rel="icon" type="image/jpeg" href="images/shoe1.jpg">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="jumbotron text-center">
-            <h1>MQTT</h1>
-            <p>My MQTT Web App</p>
-        </div>
+
+<head>
+    <title>Xie Kind</title>
+    <link rel="icon" type="image/jpeg" href="images/shoe1.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>MQTT</h1>
+        <p>My MQTT Web App</p>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -17,9 +19,10 @@
                     <div class="conatiner mx-auto">
                         <center>
                             <div class="card-header">
-                                <div class="text-center h4">Broker</div>  </div>
-                                <input id="broker" value="wss://test.mosquitto.org:8081/mqtt"><br>
-                                <button id="connect" onclick="onConnect()">Connect</button>
+                                <div class="text-center h4">Broker</div>
+                            </div>
+                            <input id="broker" value="wss://test.mosquitto.org:8081/mqtt"><br>
+                            <button id="connect" onclick="onConnect()">Connect</button>
                         </center>
                     </div>
                 </div>
@@ -28,33 +31,33 @@
                 <div class="card">
                     <div class="container">
                         <center>
-                                <div class="card-header h4">Publisher</div>
-                                Topic : <input id="publishTopic" value="Judilyn"><br>
-                                Payload : <input id="publishPayload" value="But-anon"><br>
-                                    <button id="publish" onclick="onPublish()">Publish</button>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="container">
-                        <center>
-                                <div class="card-hearder h4">Subscriber</div>
-                                Topic: <input id="subscribeTopic" value="Judilyn"><br>
-                                <button id="subscribe" onclick="onSubscribe()">Subscribe</button>
+                            <div class="card-hearder h4">Subscriber</div>
+                            Topic: <input id="subscribeTopic" value="Judilyn"><br>
+                            <button id="subscribe" onclick="onSubscribe()">Subscribe</button>
                         </center>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col">
+            <div class="card">
+                <div class="container">
+                    <center>
+                        <div class="card-header h4">Publisher</div>
+                        Topic : <input id="publishTopic" value="Judilyn"><br>
+                        Payload : <input id="publishPayload" value="But-anon"><br>
+                        <button id="publish" onclick="onPublish()">Publish</button>
+                    </center>
+                </div>
+            </div>
+        </div>
     </div>
-    
-        
-    </body>
 
-    <script src="scripts/browserMqtt.js"></script>
-    <script src="scripts/controller.js"></script>
+
+</body>
+
+<script src="scripts/browserMqtt.js"></script>
+<script src="scripts/controller.js"></script>
 </body>
 
 </html>
