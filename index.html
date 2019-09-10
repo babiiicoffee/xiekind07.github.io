@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
-<body>
-    <div class="jumbotron text-center">
+<body style="background-image:url(https://iso.500px.com/wp-content/uploads/2016/04/stock-photo-150595123.jpg)">
+    <div class="jumbotron text-center" style="background-image:url(https://iso.500px.com/wp-content/uploads/2016/04/stock-photo-150595123.jpg);background-repeat: no-repeat;">
         <h1>MQTT</h1>
         <p>My MQTT Web App</p>
     </div>
@@ -22,39 +22,54 @@
                                 <div class="text-center h4">Broker</div>
                             </div>
                             <input id="broker" value="wss://test.mosquitto.org:8081/mqtt"><br>
-                            <button id="connect" onclick="onConnect()">Connect</button>
+                            <button class="btn btn-outline-success" id="connect" onclick="onConnect()">Connect</button>
+                            <button class="btn btn-outline-danger" id="connect" onclick="onConnect()">Disonnect</button>
                         </center>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="container">
                         <center>
-                            <div class="card-hearder h4">Subscriber</div>
+                            <div class="card-header">
+                                <div class="text-center h4">Subscriber</div>
+                            </div>
                             Topic: <input id="subscribeTopic" value="Judilyn"><br>
-                            <button id="subscribe" onclick="onSubscribe()">Subscribe</button>
+                            <button class="btn btn-outline-success" id="subscribe" onclick="onSubscribe()">Subscribe</button>
+                            <button class="btn" id="subscribe" >Unsubscribe</button>
                         </center>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="container">
-                    <center>
-                        <div class="card-header h4">Publisher</div>
-                        Topic : <input id="publishTopic" value="Judilyn"><br>
-                        Payload : <input id="publishPayload" value="But-anon"><br>
-                        <button id="publish" onclick="onPublish()">Publish</button>
-                    </center>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="container">
+                        <center>
+                            <div class="card-header">
+                                <div class="text-center h4">Publisher</div>
+                            </div>
+                            Topic : <input id="publishTopic" value="Judilyn">
+                            Payload : <input id="publishPayload" value="But-anon"><br>
+                            <button class="btn btn-outline-success" id="publish" onclick="onPublish()">Publish</button>
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </body>
+
+<style>
+    .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+</style>
 
 <script src="scripts/browserMqtt.js"></script>
 <script src="scripts/controller.js"></script>
